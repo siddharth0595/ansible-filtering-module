@@ -1,0 +1,9 @@
+- hosts:  webserver
+  name: filtering the changes
+  tasks:
+    - name: creating a file & editing
+      lineinfile:
+        path: /root/ansible/n-ansible.conf
+        line: "#default file for ansible playbook"
+        create: yes
+              

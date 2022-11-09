@@ -1,0 +1,8 @@
+- hosts:  webserver
+  tasks:
+    - name: "running date command"
+      command:
+        cmd:  "date"
+      register: x
+    - debug:
+        var:  x

@@ -1,0 +1,22 @@
+- hosts:  webserver
+  name: filtering the changes
+  tasks:
+    - name: allowing password based authentication
+      lineinfile: 
+        path: /etc/ssh/sshd_config  
+        regexp: "^PasswordAuthentication no"
+        line: "PasswordAuthentication yes"
+        state:  present
+
+    - name: creating a file & editing
+      lineinfile:
+        path: /root/ansible/n-ansible.conf
+        line: "#default file for ansible playbook"
+        create: yes
+
+    - name: changing the ownership of file
+      lineinfile:
+        path: /root/ansible/n-ansible.conf
+        mode: "1666"
+        owner:  "ec2-user"
+        state:  present 
